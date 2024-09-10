@@ -1,14 +1,20 @@
 interface Todo {
     id: number;
     title: string;
-    status: string;
+    status: TodoStatus;
     completedOn?: Date;
 }
 
+enum TodoStatus {
+    Done = "done",
+    InProgress = "in-progress",
+    Todo = "todo"
+}
+
 const todoItems: Todo[] = [
-    { id: 1, title: "Learn HTML", status: "done", completedOn: new Date("2021-09-11") },
-    { id: 2, title: "Learn TypeScript", status: "in-progress" },
-    { id: 3, title: "Write the best app in the world", status: "todo" },
+    { id: 1, title: "Learn HTML", status: TodoStatus.Done, completedOn: new Date("2021-09-11") },
+    { id: 2, title: "Learn TypeScript", status: TodoStatus.InProgress },
+    { id: 3, title: "Write the best app in the world", status: TodoStatus.Todo },
 ]
 
 function addTodoItem(todo) {
@@ -17,7 +23,7 @@ function addTodoItem(todo) {
     const newTodo = {
         id,
         title: todo,
-        status: "todo",
+        status: TodoStatus.Todo,
     }
 
     todoItems.push(newTodo)
